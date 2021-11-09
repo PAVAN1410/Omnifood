@@ -1,0 +1,3 @@
+<?php
+$caloriesInCart = 0;
+?>
