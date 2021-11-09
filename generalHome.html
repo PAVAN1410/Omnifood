@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing</title>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(Images/home.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            width: 80%;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .nav_after {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: white;
+            box-shadow: 0 2px 2px #efefef;
+            color: black;
+            z-index: 99999;
+        }
+
+        .row {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 100px;
+            width: auto;
+            float: left;
+            margin-top: 20px;
+        }
+
+        .logo-black {
+            display: none;
+            height: 70px;
+            width: auto;
+            float: left;
+            margin-top: 20px;
+        }
+
+        .display_class {
+            display: none;
+        }
+
+        nav ul {
+            float: right;
+            list-style: none;
+            margin-top: 55px;
+            /* color: white; */
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 40px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        nav ul li a {
+            padding: 8px 0;
+            color: inherit;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 20px;
+            border-bottom: 2px solid transparent;
+            -webkit-transition: border-bottom 0.2s;
+            transition: border-bottom 0.2s;
+        }
+
+        nav ul li a:hover {
+            border-bottom: 2px solid orange;
+        }
+
+        .content {
+            width: 80%;
+            margin: auto;
+            flex-grow: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .content h1 {
+            font-size: 50px;
+            font-weight: bolder;
+            margin-bottom: 10px;
+            word-spacing: 4px;
+            letter-spacing: 1px;
+        }
+
+        .content a {
+            padding: 20px;
+            color: inherit;
+            border-radius: 40px;
+            border: 2px solid #e67e22;
+            margin-top: 50px;
+            background-color: #e67e22;
+            text-decoration: none;
+            font-size: 25px;
+
+        }
+
+        .features {
+            margin-top: 40px;
+            padding: 100px;
+
+        }
+
+        .row h2 {
+            font-size: 40px;
+            text-align: center;
+            color: rgb(85, 85, 85);
+            text-transform: uppercase;
+        }
+
+        .row h2::after {
+            display: block;
+            height: 2px;
+            background-color: #e67e22;
+            content: " ";
+            width: 100px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        .row p {
+            /* text-align: center; */
+            line-height: 145%;
+            color: rgb(85, 85, 85);
+            width: 70%;
+            margin-left: 15%;
+            font-size: 22px;
+            padding-top: 20px;
+        }
+
+
+        .cards {
+            display: flex;
+            color: rgb(85, 85, 85);
+            margin: 10px 0 10px 0;
+        }
+
+        .card {
+            display: flex;
+            visibility: hidden;
+            flex-direction: column;
+            line-height: 145%;
+            color: rgb(85, 85, 85);
+            justify-content: space-around;
+            height: 300px;
+            align-items: center;
+            padding: 8px;
+            text-align: center;
+            font-size: 22px;
+            padding-top: 20px;
+
+        }
+
+        .card_visible {
+            visibility: visible;
+            animation: popout 3s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes popout {
+            0% {
+                opacity: 0;
+            }
+
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <style>
+        .imageGrid {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            width: 100%;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .img_photo {
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+        }
+
+        .imageGrid img {
+            filter: brightness(80%);
+            width: 100%;
+            overflow: hidden;
+            transform: scale(1.15);
+            transition: all 0.5s;
+        }
+
+        .imageGrid img:hover {
+            transform: scale(1.01);
+            filter: brightness(100%);
+        }
+
+        .cities,
+        .prices {
+            margin: 60px auto 0 auto;
+            overflow: hidden;
+            width: 80%;
+        }
+
+        .citycards {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            margin-top: 20px;
+            width: 100%;
+            grid-gap: 10px;
+
+        }
+
+        .citycard {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-size: 20px;
+            height: 320px;
+            color: rgb(85, 85, 85);
+        }
+
+        .pricecards {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            margin-top: 20px;
+            width: 100%;
+            grid-gap: 10px;
+            overflow: hidden;
+            justify-content: space-evenly;
+            padding: 20px;
+
+        }
+
+        .pricecard {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-size: 20px;
+            color: rgb(85, 85, 85);
+            align-items: center;
+            width: max-content;
+            padding: 10px;
+            box-shadow: 5px 5px 5px black;
+            /* transform: scale(0.9); */
+            transition: all 500ms;
+            margin: 10px;
+        }
+
+        .pricecard:hover{
+            transform: scale(1.09);
+        }
+
+        .citycard img {
+            width: 100%;
+        }
+
+        .citycard div,
+        .citycard a {
+            font-size: 21px;
+            color: rgb(85, 85, 85);
+
+        }
+
+
+        .pricecard h2 {
+            font-size: 150%;
+        }
+
+        .pricecard .money {
+            font-size: 300%;
+            color: #e67e22;
+        }
+
+        .pricecard .money span {
+            font-size: 50%;
+        }
+
+        .details{
+            padding: 20px;
+        }
+
+        .only::after,.details::after {
+            content: '';
+            height: 1px;
+            width: 100%;
+            display: block;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        .signup{
+            padding: 2px 10px;
+            height: 50px;
+            text-align: center;
+            background-color:orange;
+            /* width: 120px; */
+            border: none;
+            color: white;
+            font-size: 20px;    
+            font-weight: bold;
+            margin: auto;
+            border-radius: 25px ;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav id='nav'>
+            <div class="row">
+                <img class='logo' src="Images/logo-white.png" alt="">
+                <img class='logo-black' src="Images/logo.png" alt="">
+                <ul>
+                    <li><a href="">Food Delivery</a></li>
+                    <li><a href="">How It Works</a></li>
+                    <li><a href="login.php">Login</a></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="content">
+
+            <h1>GOODBYE JUNK FOOD.
+                <br>
+                HELLO SUPER HEALTHY MEALS.
+            </h1>
+            <a href="#">I'm hungry</a>
+        </div>
+    </header>
+    <section class="features" id="features">
+        <div class="row">
+            <h2>Get food fast &mdash; not fast food</h2>
+            <p class="long-copy">
+                Hello, we're Omnifood, your new premium food delivery service. We know you're always busy. No time for
+                cooking. So let us take care of that, we're really good at it, we promise!
+            </p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <ion-icon name="infinite-sharp" style="font-size: 70px;color: orange;"></ion-icon>
+                <h3>Up to 365 days/year</h3>
+                <p>
+                    Never cook again! We really mean that. Our subscription plans include up to 365 days/year coverage.
+                    You can also choose to order more flexibly if that's your style.
+                </p>
+            </div>
+            <div class="card">
+                <ion-icon name="stopwatch" style="font-size: 70px;color: orange;"></ion-icon>
+                <!-- <i class="ion-ios-stopwatch-outline icon-big"></i> -->
+                <h3>Ready in 40 minutes</h3>
+                <p>
+                    You're only fourty minutes away from your delicious and super healthy meals delivered right to your
+                    home. We work with the best chefs in each town to ensure that you're 100% happy.
+                </p>
+            </div>
+            <div class="card">
+                <i class="fas fa-carrot" style="font-size:48px;color:orange;"></i>
+                <h3>100% organic</h3>
+                <p>
+                    All our vegetables are fresh, organic and local. Animals are raised without added hormones or
+                    antibiotics. Good for your health, the environment, and it also tastes better!
+                </p>
+            </div>
+            <div class="card">
+                <ion-icon name="cart" style="font-size: 70px;color: orange;"></ion-icon>
+                <h3>Order anything</h3>
+                <p>
+                    We don't limit your creativity, which means you can order whatever you feel like. You can also
+                    choose from our menu containing over 100 delicious meals. It's up to you!
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <div class="imageGrid">
+        <div class="img_photo"><img src="Images/meal1.jpg" alt=""></div>
+        <div class="img_photo"><img src="Images/meal2.jpg" alt=""></div>
+        <div class="img_photo"><img src="Images/meal3.jpg" alt=""></div>
+        <div class="img_photo"><img src="Images/meal4.jpg" alt=""></div>
+        <div class="img_photo"><img src="Images/meal5.jpg" alt=""></div>
+        <div class="img_photo"><img src="Images/meal6.jpg" alt=""></div>
+        <div class="img_photo"><img src="Images/meal7.jpg" alt=""></div>
+        <div class="img_photo"><img src="Images/meal8.jpg" alt=""></div>
+
+
+    </div>
+    <section class='cities'>
+        <div class="row">
+            <h2>WE'RE CURRENTLY IN THESE CITIES</h2>
+        </div>
+
+
+        <div class=" citycards">
+            <div class="citycard">
+                <div class="img_photo">
+                    <img src="Images/delhi.jpg" alt="">
+                </div>
+                <h3>DELHI</h3>
+                <div>
+                    <ion-icon name="person" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#">2500+ healthy customers</a>
+                </div>
+                <div>
+                    <ion-icon name="star" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#">160+ top chefs</a>
+                </div>
+                <div>
+                    <ion-icon name="logo-twitter" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#" style="color: #e67e22;">@omnifood_Delhi</a>
+                </div>
+
+            </div>
+            <div class="citycard">
+                <div class="img_photo">
+                    <img src="Images/mumbai.jpg" alt="">
+                </div>
+                <h3>MUMBAI</h3>
+
+                <div>
+                    <ion-icon name="star" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#">90+ top chefs</a>
+                </div>
+                <div>
+                    <ion-icon name="person" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#">1800+ healthy customers</a>
+                </div>
+                <div>
+                    <ion-icon name="logo-twitter" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#" style="color: #e67e22;">@omnifood_Mumbai</a>
+                </div>
+            </div>
+            <div class="citycard">
+                <div class="img_photo">
+                    <img src="Images/chennai.jpeg" alt="">
+                </div>
+                <h3>CHENNAI</h3>
+                <div>
+                    <ion-icon name="person" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#">900+ healthy customers</a>
+                </div>
+
+                <div>
+                    <ion-icon name="star" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#">75+ top chefs</a>
+                </div>
+                <div>
+                    <ion-icon name="logo-twitter" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#" style="color: #e67e22;">@omnifood_Chennai</a>
+                </div>
+
+            </div>
+            <div class="citycard">
+                <div class="img_photo">
+                    <img src="Images/kolkata.jpeg" alt="">
+                </div>
+                <h3>KOLKATA</h3>
+                <div>
+                    <ion-icon name="person" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#">3500+ healthy customers</a>
+                </div>
+
+                <div>
+                    <ion-icon name="star" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#">210+ top chefs</a>
+                </div>
+                <div>
+                    <ion-icon name="logo-twitter" style="font-size: 23px;color: orange;"></ion-icon>
+                    <a href="#" style="color: #e67e22;">@omnifood_Kolkata</a>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <section class='prices'>
+        <div class="row">
+            <h2>START EATING HEALTHY TODAY</h2>
+        </div>
+
+        <div class="pricecards">
+            <div class="pricecard">
+                <div style="background-color: #f9f7f7; padding: 20px;">
+                    <h2>PREMIUM</h2>
+                    <p class="money">&#x20B9;7200 <span>/ month</span></p>
+                    <p class="only">That's only &#x20B9;240 per meal</p>
+                </div>
+                <div class="details">
+                    <div >
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                       &nbsp;&nbsp; 1 meal every day
+                    </div>
+                    <div>
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Order 24/7
+                    </div>
+                    <div>
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Access to newest creations
+                    </div>
+                    <div>
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Free delivery
+                    </div>
+                </div>
+
+                <div>
+                    <form action="Register.php">
+                        <button class="signup" type="submit">SignUp now</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="pricecard">
+                <div style="background-color: #f9f7f7; padding: 20px;">
+                    <h2>PRO</h2>
+                    <p class="money">&#x20B9;2000 <span>/ month</span></p>
+                    <p class="only">That's only &#x20B9;200 per meal</p>
+                </div>
+                <div class="details">
+                    <div >
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                       &nbsp;&nbsp; 1 meal 10 days/month
+                    </div>
+                    <div>
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Order 24/7
+                    </div>
+                    <div>
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Access to newest creations
+                    </div>
+                    <div>
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Free delivery
+                    </div>
+                </div>
+
+                <div>
+                    <form action="Register.php">
+                        <button class="signup" type="submit">SignUp now</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="pricecard">
+                <div style="background-color: #f9f7f7; padding: 20px;">
+                    <h2>STARTER</h2>
+                    <p class="money">&#x20B9;180 <span>/ meal</span></p>
+                </div>
+                <div class="details">
+                    <div >
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                       &nbsp;&nbsp; 1 meal every day
+                    </div>
+                    <div>
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Order 24/7
+                    </div>
+                    <div style="visibility: hidden;">
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Access to newest creations
+                    </div>
+                    <div>
+                        <ion-icon name="checkmark-sharp" style="font-size: 23px;color: orange;"></ion-icon>
+                        &nbsp;&nbsp;Free delivery
+                    </div>
+                </div>
+
+                <div>
+                    <form action="Register.php">
+                        <button class="signup" type="submit">SignUp now</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+
+
+    <div style="height: 201vh;background-color: white;"></div>
+
+
+    <script>
+        logo = document.querySelector('.logo');
+        logo_black = document.querySelector('.logo-black');
+        nav = document.getElementById("nav");
+
+
+        window.addEventListener("scroll", function (event) {
+            var scroll = this.scrollY;
+            if (scroll > (95 * window.innerHeight) / 100) {
+
+                nav.classList.add('nav_after')
+                logo.style.display = 'none';
+                logo_black.style.display = 'block';
+            }
+            else {
+
+                nav.classList.remove('nav_after');
+                logo_black.style.display = 'none';
+                logo.style.display = 'block';
+
+            }
+
+        })
+    </script>
+
+    <script>
+        function isInViewport(el) {
+            const rect = el.getBoundingClientRect();
+
+            return (rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth);
+        }
+        const card = document.querySelectorAll('.card');
+
+        document.addEventListener('scroll', function () {
+
+            if (isInViewport(card[0])) {
+                console.log('true_')
+
+
+                card.forEach(element => {
+                    element.classList.add('card_visible');
+                });
+            } else {
+                console.log('false_')
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
